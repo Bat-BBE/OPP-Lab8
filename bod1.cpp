@@ -340,7 +340,6 @@ int main() {
         }
     }
     cout << "====================" << endl;
-    Shape::get();
     
     // shapes массивын элементүүдийн мэдээллийг хэвлэх
     cout << "Ankhnii medeelel: " << endl;
@@ -377,7 +376,7 @@ int main() {
     for(int i = 0; i < 10; i++) {
         delete shapes[i];
     }
-    // shapes массивын элементүүдийг устгасны дараа cnt-г хэвлэх
+    //
     Shape::get();
     cout << "====================" << endl;
     return 0;
