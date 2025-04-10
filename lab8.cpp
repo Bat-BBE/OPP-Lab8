@@ -18,9 +18,7 @@ public:
         //cout << "Ustgasan shape: " << name << endl;
         delete[] name;
     }
-    virtual void print() = 0; 
-    virtual void print_area() = 0;
-    virtual void print_perimeter() = 0; 
+    virtual void print() = 0;
 };
 
 class Shape2D : public Shape {
@@ -80,24 +78,11 @@ public:
         coordinate[0][0] = center_x;
         coordinate[0][1] = center_y;
     }
-
-    void print(){
-        Shape2D::print();
-        cout << "       Area: " << area() << endl;
-        cout<<  "       Perimeter: " << perimeter() << endl;
-    }
     
-    void print_area() {
+    void print() {
         Shape2D::print();
         cout << "       Area: " << area() << endl;
     }
-
-    void print_perimeter(){
-        Shape2D::print();
-        cout<<  "       Perimeter: " << perimeter() << endl;
-    }
-
-
     
     ~Circle() {
         //cout << "Ustgasan Circle: " << name << endl;
@@ -147,21 +132,10 @@ public:
     double perimeter() {
         return 4 * length;
     }
-
-    void print(){
-        Shape2D::print();
-        cout << "       Area: " << area() << endl;
-        cout<<  "       Perimeter: " << perimeter() << endl;
-    }
     
-    void print_area() {
+    void print() {
         Shape2D::print();
         cout << "       Area: " << area() << endl;
-    }
-
-    void print_perimeter(){
-        Shape2D::print();
-        cout<<  "       Perimeter: " << perimeter() << endl;
     }
     
     ~Square() {
@@ -208,21 +182,10 @@ public:
     double perimeter() {
         return 3 * length;
     }
-
-    void print(){
-        Shape2D::print();
-        cout << "       Area: " << area() << endl;
-        cout<<  "       Perimeter: " << perimeter() << endl;
-    }
     
-    void print_area() {
+    void print() {
         Shape2D::print();
         cout << "       Area: " << area() << endl;
-    }
-
-    void print_perimeter(){
-        Shape2D::print();
-        cout<<  "       Perimeter: " << perimeter() << endl;
     }
     
     ~Triangle() {
@@ -232,6 +195,7 @@ public:
 
 void selectionSort(Shape2D* shapes[], int n) {
 
+    
     for (int i = 0; i < n - 1; i++) {
         int min_idx = i;
         for (int j = i + 1; j < n; j++) {
@@ -242,21 +206,6 @@ void selectionSort(Shape2D* shapes[], int n) {
         if (min_idx != i) {
             swap(shapes[i], shapes[min_idx]);
         }
-    }
-}
-// Insertion sort for sorting perimeters. 
-// Separates array into sorted and unsorted. Compares first unsorted value of the array and places it in the correct position. 
-void insertion_sort(Shape2D* shapes[], int n){
-    for(int i = 1; i < n; i++){
-        Shape2D* current = shapes[i]; 
-        double min_val = current->perimeter(); 
-        int j = i - 1; 
-
-        while(j >= 0 && shapes[j]->perimeter() > min_val){
-            shapes[j+1] = shapes[j]; 
-            j--; 
-        }
-        shapes[j+1] = current; 
     }
 }
 
@@ -286,19 +235,13 @@ int main() {
     
     cout << "\nErembelegdsen medeelel (Area): " << endl;
     for (int i = 0; i < n; i++) {
-        shapes[i]->print_area();
+        shapes[i]->print();
         cout << "   ---------------" << endl;
     }
     cout << "====================" << endl;
 
-    insertion_sort(shapes, n); 
-
-    cout<<"\nErembelegdsen medeelel (Perimeter): "<<endl;
-    for(int i = 0; i < n; i++){
-        shapes[i]->print_perimeter(); 
-        cout << "   ---------------" << endl;
-    }
-    cout << "====================" << endl;
+    // cout<<"\nErembelegdsen medeelel (Perimeter): "<<endl;
+    // for(int i = 0; )
     
     for(int i = 0; i < n; i++) {
         delete shapes[i];
